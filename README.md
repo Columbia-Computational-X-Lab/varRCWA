@@ -62,11 +62,6 @@ Download from [here](https://eigen.tuxfamily.org/index.php?title=Main_Page)
 
 ```sudo apt-get install libomp-dev```
 
-
-### Boost (header only)
-
-```sudo apt-get install libboost-all-dev```
-
 ### Intel OneAPI (MKL, TBB)
 
 Download from [here](https://www.intel.com/content/www/us/en/developer/tools/oneapi/base-toolkit-download.html)

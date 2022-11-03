@@ -1,10 +1,18 @@
-include_directories(
+if (BUILD_GPU)
+  include_directories(
     ${MKL_INCLUDE_DIR}
     ${EIGEN3_INCLUDE_DIRS}
-    ${Boost_INCLUDE_DIRS}
     ${TBB_INCLUDE_DIRS}
     ${MAGMA_INCLUDE_DIR}
-)
+  )
+else()
+  include_directories(
+    ${MKL_INCLUDE_DIR}
+    ${EIGEN3_INCLUDE_DIRS}
+    ${TBB_INCLUDE_DIRS}
+  )
+endif()
+
 
 if (BUILD_GPU)
   add_exe(test_gpu

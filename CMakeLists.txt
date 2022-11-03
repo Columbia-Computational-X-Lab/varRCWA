@@ -1,17 +1,17 @@
 cmake_minimum_required(VERSION 3.19 FATAL_ERROR)
 # ===============================================
-# Variant RCWA
+# VarRCWA
 # ===============================================
 # Developed by 
 # Ziwei Zhu @ Columbia University
 #
 # How to generate Makefile:
-# cmake -D CMAKE_CUDA_HOST_COMPILER=gcc -D CMAKE_CUDA_COMPILER=nvcc -D CMAKE_CXX_COMPILER=g++ .
+# cmake -D CMAKE_CUDA_HOST_COMPILER=gcc -D CMAKE_CUDA_COMPILER=<location of nvcc-11.4> -D CMAKE_CXX_COMPILER=g++ .
 # ===============================================
 option(WITH_OPENMP "enable OpenMP acceleration or not" ON)
 option(BUILD_DEBUG "Turn on the debug mode" OFF)
 option(BUILD_TESTS "Build unit test cases" ON)
-option(BUILD_GPU "Build GPU examples" ON)
+option(BUILD_GPU "Build GPU examples" OFF)
 
 if (BUILD_GPU)
   Project(varRCWA LANGUAGES CUDA CXX C)
