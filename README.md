@@ -33,7 +33,7 @@ Some other comments:
 
 ## Build and Dependencies
 
-We use [Cmake](https://cmake.org/download/) 3.25.0 and Make (the standard build system on Linux(Ubuntu)) for building the library. Please use g++-10 to build as we use some C++20 features (like \textbf{numbers}). The CUDA compiler should be 11.4. You can check the version of your installation by the following commands:
+We use [Cmake](https://cmake.org/download/) 3.25.0 and Make (the standard build system on Linux(Ubuntu)) for building the library. Please use g++-10 to build as we use some C++20 features (like *numbers*). The CUDA compiler should be 11.4. You can check the version of your installation by the following commands:
 
 ```
 cmake --version
