@@ -14,7 +14,7 @@ some example codes are in src/tests
 - test_gds_cpu.cpp: GDSII examples on CPU
 - test_gds_gpu.cpp: GDSII examples on GPU
 - test_metasurface_cpu.cpp: metasurface (periodic boundary) examples on CPU
-- test_metasurface_gpu.cpp: metasurface (periodic boundary) examples on CPU
+- test_metasurface_gpu.cpp: metasurface (periodic boundary) examples on GPU
 
 Some other tests
 - test_cpu_differential_method.cpp: test the stability of differential method
