@@ -296,22 +296,6 @@ void validateDiffmethod(int N, const std::string& filename)
 
 int main()
 {
-  // simulateRCWA(256, "RCWA_CPU_p_005");
-  // validateDiffmethod(1, "RCWA_CPU_p_005_256.txt");
-  // validateVarRCWA(10., "var11_RCWA_Tuu_CPU_1024.txt");
-  validateRCWA(1, "RCWA_CPU_length_005_256.txt");
-
-  // for (int i = 1; i < 256; i*=2) {
-  //   validateRCWA(i, "var11_RCWA_Tuu_CPU_1024.txt");
-  // }
-
-  // for (int i = 1; i <= 64; i*=2) {
-  //   validateDiffmethod(i, "var11_RCWA_Tuu_CPU_1024.txt");
-  // }
-
-  // for (scalar e = 1.; e >= 0.0005; e*=0.5) {
-  //   validateVarRCWA(e, "var11_RCWA_Tuu_CPU_1024.txt");
-  // }
-  // validateVarRCWA(1., "var11_RCWA_Tuu_CPU_1024.txt");
+  simulateRCWA(256, "RCWA_CPU_p_005");
   return 0;
 }

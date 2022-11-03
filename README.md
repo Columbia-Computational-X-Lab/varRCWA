@@ -1,5 +1,9 @@
 # varRCWA
 
+The basic implementation of varRCWA, RCWA, differential method with both periodic boundary condition and PML in the paper:
+
+VarRCWA: An Adaptive High-Order Rigorous Coupled Wave Analysis Method. Ziwei Zhu and Changxi Zheng
+ACS Photonics 2022 9 (10), 3310-3317. DOI: 10.1021/acsphotonics.2c00662
 
 ## Examples
 
@@ -22,9 +26,21 @@ Some other tests
 - The main algorithm of the differential method is located in src/core/DifferentialIntegrator.cpp
 - The GPU version of the above algorithms are in src/core/XXXXIntegratorGPU.cpp
 
+Some other comments:
+- For comparison with RCWA, the order of the element in the scattering matrix can be sensitive depending on the computational architecture. (A problem with most eigenvalue decomposition algorithm.) If you are really comparing the full scattering matrix including all the unguided modes, please compare the results from GPU with GPU and CPU with CPU. If you are compare some elements, please compare the non-degerated modes.
+- The mode normalization in RCWA is different from most other algorithms as it is in the Fourier space. The energy of different modes with normalized vectors in Fourier space can be different. Please refer to the function *varRCWA_benchmark_guidedmodes* in test_cpu.cpp for energy-based normalization.
+
+
 ## Build and Dependencies
 
-We use [Cmake](https://cmake.org/download/) 3.25.0 and Make (the standard build system on Linux(Ubuntu)) for building the library. 
+We use [Cmake](https://cmake.org/download/) 3.25.0 and Make (the standard build system on Linux(Ubuntu)) for building the library. Please use g++-10 to build as we use some C++20 features (like <numbers>). The CUDA compiler should be 11.4. You can check the version of your installation by the following commands:
+
+```
+cmake --version
+gcc --version
+g++ --version
+nvcc --version
+```
 
 A tutorial on CMake is available [here](https://cmake.org/cmake/help/latest/guide/tutorial/index.html)
 
@@ -60,7 +76,15 @@ Download from [here](https://www.intel.com/content/www/us/en/developer/tools/one
 
 Download from [here](https://bitbucket.org/icl/magma/src/master/)
 
-A tutorial is [here](https://rgb.sh/blog/magma)
+After installing Magma, please take a look at the following line of CMakeLists.txt
+```
+if (BUILD_GPU)
+  set(MAGMA_INCLUDE_DIR /usr/local/include)
+  set(MAGMA_LIBRARIES libmagma.so;
+      libiomp5.so)
+endif()
+```
+You may need to change the directory (/usr/local/include) of where you install Magma header files. 
 
 ### CUDA 11.4 (Optional for GPU code)
 
@@ -78,13 +102,13 @@ cmake -D CMAKE_CUDA_HOST_COMPILER=gcc -D CMAKE_CXX_COMPILER=g++ .
 make -j8
 ```
 
-
 For GPU (use CUDA 11.4 please!)
 
 ```
-cmake -D CMAKE_CUDA_HOST_COMPILER=gcc -D CMAKE_CUDA_COMPILER=nvcc -D CMAKE_CXX_COMPILER=g++ .
+cmake -D CMAKE_CUDA_HOST_COMPILER=gcc -D CMAKE_CUDA_COMPILER=/usr/local/cuda-11/bin/nvcc -D CMAKE_CXX_COMPILER=g++ .
 make -j8
 ```
+The address of the CUDA compiler nvcc may need to be changed depending on where you install it. 
 
 ## Citation
 

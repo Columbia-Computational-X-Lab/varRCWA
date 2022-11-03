@@ -346,38 +346,7 @@ void validateDiffmethod(int N, const std::string& filename)
 
 int main()
 {
-  // test1();
-  // simulateRCWA(8192*8, "contour_RCWA_Tuu_GPU");
-  // for (int i = 1; i < 256; i*=2) {
-  //   validateVarRCWA_direct(i, "var11_RCWA_Tuu_1024.txt");
-  //   validateRCWA(i, "var11_RCWA_Tuu_1024.txt");
-  // }
+  simulateRCWA(8192*8, "contour_RCWA_Tuu_GPU");
   
-  // validateVarRCWA_direct(3, "var11_RCWA_Tuu_1024.txt");
-  // for (scalar e = 1.; e >= 0.0001; e*=0.5) {
-  //   validateVarRCWA(e, "contour_RCWA_Tuu_GPU_32768.txt");
-  // }
-  // validateVarRCWA(0.5, "contour_RCWA_Tuu_GPU_32768.txt");
-  // validateDiffmethod(8192, "contour_RCWA_Tuu_GPU_32768.txt");
-  //validateDiffmethod(8192, "contour_varRCWA_Tuu_GPU_5e-05.txt");
-  
-  // simulateVarRCWA(1., "contour_varRCWA_Tuu_GPU");
-  // simulateVarRCWA(0.00005, "contour_varRCWA_Tuu_GPU");
-  // validateVarRCWA(0.00008, "contour_varRCWA_Tuu_GPU_5e-05.txt");
-  validateRCWA(4096, "contour_varRCWA_Tuu_GPU_5e-05.txt");
-  validateRCWA(8192, "contour_varRCWA_Tuu_GPU_5e-05.txt");
-  // validateDiffmethod(20000, "contour_varRCWA_Tuu_GPU_5e-05.txt");
-  // validateRCWA(8192*2, "contour_RCWA_Tuu_GPU_32768.txt");
-  // for (int N = 1; N <= 4096; N*=2) {
-  //   validateDiffmethod(N, "contour_RCWA_Tuu_GPU_32768.txt");
-  // }
-
-  // validateRCWA(1024, "contour_RCWA_Tuu_GPU_8192.txt");
-
-  // validateVarRCWA(0.001953125*0.5, "splitter_RCWA_Tuu_GPU_8192.txt");
-  // validateVarRCWA(0.001953125*0.25*0.25, "contour_RCWA_Tuu_GPU_32768.txt");
-  // validateRCWA(4096, "contour_RCWA_Tuu_GPU_32768.txt");
-
-  // validateRCWA(256, "splitter_RCWA_Tuu_8192.txt");
   return 0;
 }

@@ -262,30 +262,6 @@ void validateDiffmethod(int N, const std::string& filename)
 
 int main()
 {
-  // test1();
-  // simulateRCWA(8192*4, "contour_RCWA_Tuu_CPU");
-  // for (int i = 1; i <= 2048; i*=2) {
-  //   validateRCWA(i, "contour_varRCWA_Tuu_CPU_5e-05.txt");
-  // }
-  // for (int N = 1; N <= 4096; N*=2) {
-  //   validateDiffmethod(N, "contour_RCWA_Tuu_CPU_32768.txt");
-  // }
-  validateRCWA(4096, "contour_varRCWA_Tuu_CPU_5e-05.txt");
-  validateRCWA(8192, "contour_varRCWA_Tuu_CPU_5e-05.txt");
-  validateRCWA(8192*2, "contour_varRCWA_Tuu_CPU_5e-05.txt");
-  validateVarRCWA(0.00032*0.5, "contour_varRCWA_Tuu_CPU_5e-05.txt");
-  validateVarRCWA(0.00032*0.2, "contour_varRCWA_Tuu_CPU_5e-05.txt");
-  // for (scalar e = 1.; e >= 0.0001; e*=0.2) {
-  //   validateVarRCWA(e, "contour_varRCWA_Tuu_CPU_5e-05.txt");
-  // }
-  // validateVarRCWA(1., "contour_RCWA_Tuu_CPU_32768.txt");
-  // validateVarRCWA(0.0016, "contour_RCWA_Tuu_CPU_32768.txt");
-  // validateDiffmethod(2048, "contour_varRCWA_Tuu_CPU_5e-05.txt");
-  // validateDiffmethod(8192*2, "contour_varRCWA_Tuu_CPU_5e-05.txt");
-  // simulateVarRCWA(0.00005, "contour_varRCWA_Tuu_CPU");
-  // validateVarRCWA(0.0001, "contour_varRCWA_Tuu_CPU_5e-05.txt");
-  // validateDiffmethod(4096, "contour_varRCWA_Tuu_CPU_5e-05.txt");
-  // validateDiffmethod(8192, "contour_varRCWA_Tuu_CPU_5e-05.txt");
-  
+  simulateRCWA(8192*4, "contour_RCWA_Tuu_CPU");
   return 0;
 }

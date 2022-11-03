@@ -11,7 +11,7 @@ cmake_minimum_required(VERSION 3.19 FATAL_ERROR)
 option(WITH_OPENMP "enable OpenMP acceleration or not" ON)
 option(BUILD_DEBUG "Turn on the debug mode" OFF)
 option(BUILD_TESTS "Build unit test cases" ON)
-option(BUILD_GPU "Build GPU examples" OFF)
+option(BUILD_GPU "Build GPU examples" ON)
 
 if (BUILD_GPU)
   Project(varRCWA LANGUAGES CUDA CXX C)

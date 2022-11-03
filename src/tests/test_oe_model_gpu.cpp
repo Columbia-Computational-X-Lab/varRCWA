@@ -346,33 +346,6 @@ void validateDiffmethod(int N, const std::string& filename)
 
 int main()
 {
-  // simulateRCWA(8192, "oe_model_RCWA_Tuu");
-  // simulateRCWA(1024, "temp");
-  // for (int i = 1; i <= 2048; i*=2) {
-  //   validateRCWA(i, "oe_model_RCWA_Tuu_8192.txt");
-  // }
-  validateRCWA(4096, "oe_model_RCWA_Tuu_8192.txt");
-  // validateDiffmethod(8, "var11_RCWA_Tuu_1024.txt");
-  // for (int i = 2048; i <= 4096; i*=2) {
-  //   validateDiffmethod(i, "oe_model_RCWA_Tuu_8192.txt");
-  // }
-  // validateDiffmethod(2048, "var12_RCWA_Tuu_8192.txt");
-
-  // for (int i = 1; i <= 1024; i*=2) {
-  //   validateRCWA(i, "var17_RCWA_Tuu_8192.txt");
-  // }
-  // validateRCWA(2048, "var12_RCWA_Tuu_8192.txt");
-  // validateRCWA(128, "var12_RCWA_Tuu_8192.txt");
-  // validateVarRCWA(0.5, "var16_RCWA_Tuu_1024.txt");
-  // validateVarRCWA_direct(3, "var11_RCWA_Tuu_1024.txt");
-  // for (scalar e = 1.; e >= 0.0005; e*=0.2) {
-  //   validateVarRCWA(e, "oe_model_RCWA_Tuu_8192.txt");
-  // }
-  // validateVarRCWA(0.002, "var17_RCWA_Tuu_8192.txt");
-
-  // validateVarRCWA(0.00390625*0.25*0.5, "var12_RCWA_Tuu_8192.txt");
-  // for (int N = 1; N <= 256; N*=2) {
-  //   validateRCWA(N, "var16_RCWA_Tuu_1024.txt");
-  // }
+  simulateRCWA(8192, "oe_model_RCWA_Tuu_GPU");
   return 0;
 }

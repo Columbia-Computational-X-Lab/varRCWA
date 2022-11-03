@@ -4,3 +4,5 @@ Makefile
 CMakeFiles/*
 src/tests/CMakeFiles/*
 tests/*
+difference_*.txt
+*RCWA*.txt

@@ -13,6 +13,7 @@
 #include "gpu/VarLayerSamplerGPU.h"
 #include "gpu/RedhefferIntegratorGPU.h"
 #include "gpu/RCWAIntegratorGPU.h"
+#include "gpu/DifferentialIntegratorGPU.h"
 #include "core/RedhefferIntegrator.h"
 
 #include "core/GDSIISampler.h"
@@ -220,14 +221,14 @@ void initialization()
   // });
 
   // var01
-  // sampler->addXRule(3, [](scalar z){
-  //     return (1. - z) * 2.6 + z * 3.7;
-  // });
+  sampler->addXRule(3, [](scalar z){
+      return (1. - z) * 2.6 + z * 3.7;
+  });
 
   // var02
-  sampler->addXRule(3, [](scalar z){
-      return (1. - 0.1*z)*2.6 + 0.1*z * 3.7;
-  });
+  // sampler->addXRule(3, [](scalar z){
+  //     return (1. - 0.1*z)*2.6 + 0.1*z * 3.7;
+  // });
 
   // var 03
   //z1 = 10.;
@@ -396,24 +397,50 @@ void validateRCWA(int N, const std::string& filename)
     << residual << endl;
 }
 
+void validateDiffmethod(int N, const std::string& filename)
+{
+  ofstream fout("difference_diffmethod.txt", ios::app);
+  initialization();
+  auto t1 = sploosh::now();
+  DifferentialIntegratorGPU integrator2(z0, z1, sampler);
+  integrator2.compute(N);
+  auto t2 = sploosh::now();
+  MatrixXcs Tuu = integrator2.Tuu();
+  
+  vector<int> indices0;
+  vector<int> indices1;
+  MatrixXcs W0ref = integrator2.W0();
+  sortEigvecCols(W0ref, indices0);
+  MatrixXcs W1ref = integrator2.W1();
+  sortEigvecCols(W1ref, indices1);
+  Tuu = reorder_tuu(Tuu, indices1, indices0);
+
+  scalar residual = compareMatrix(filename, Tuu);
+  fout << N << "\t" 
+    << sploosh::duration_milli_d(t1, t2) << "\t" 
+    << residual << endl;
+}
+
 int main()
 {
-  // test1();
-  // for (int i = 256; i <= 1024; i*=2) {
-  //   validateRCWA(i, "var07_RCWA_Tuu_1024.txt");
-  //   // validateVarRCWA_direct(i, "var04_RCWA_Tuu_4096.txt");
-  // }
+  // this will generate the file xxx_N.txt as a groundtruth
+  // it takes some time (several hours) as this is RCWA with 8192 section
+  simulateRCWA(1024, "var01_RCWA_Tuu_GPU");
 
-  // validateVarRCWA(1., "var07_RCWA_Tuu_1024.txt");
-  
-  for (scalar e = 1.; e >= 1e-5; e*=0.2) {
-    validateVarRCWA(e, "var02_RCWA_Tuu_16384.txt");
+  // validate the convergence of RCWA
+  for (int i = 1; i <= 512; i*=2) {
+    validateRCWA(i, "var01_RCWA_Tuu_GPU_1024.txt");
   }
 
-  // validateRCWA(256, "var01_RCWA_Tuu_2048.txt");
-  // simulateRCWA(1024, "var00_RCWA_Tuu");
-  // simulateRCWA(1024, "var07_RCWA_Tuu");
-  // simulateRCWA(1024, "var08_RCWA_Tuu");
-  // test3(0.5, "var01_RCWA_Tuu_32.txt");
+  // validate the convergence of differential method
+  for (int i = 1; i <= 1024; i*=2) {
+    validateDiffmethod(i, "var01_RCWA_Tuu_GPU_1024.txt");
+  }
+
+  // validate the convergence of VarRCWA
+  for (scalar e = 1.; e >= 0.008; e *= 0.2) {
+    validateVarRCWA(e, "var01_RCWA_Tuu_GPU_1024.txt");
+  }
+
   return 0;
 }

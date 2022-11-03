@@ -509,7 +509,7 @@ void varRCWA_benchmark_guidedmodes(scalar error) {
 int main()
 {
   // this will generate the file xxx_N.txt as a groundtruth
-  // it takes some time (several hours) as this is RCWA with 8192 section
+  // it takes some time (maybe one day) as this is RCWA with 8192 section
   simulateRCWA(8192, "var12_RCWA_Tuu_CPU");
 
   // validate the convergence of RCWA
@@ -518,12 +518,12 @@ int main()
   }
 
   // validate the convergence of differential method
-  for (int i = 1; i <= 4096; i*=2) {
+  for (int i = 1; i <= 1024; i*=2) {
     validateDiffmethod(i, "var12_RCWA_Tuu_CPU_8192.txt");
   }
 
   // validate the convergence of VarRCWA
-  for (scalar e = 1.; e >= 1e-5; e *= 0.2) {
+  for (scalar e = 1.; e >= 0.008; e *= 0.2) {
     validateVarRCWA(e, "var12_RCWA_Tuu_CPU_8192.txt");
   }
 

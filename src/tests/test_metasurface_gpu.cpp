@@ -326,16 +326,6 @@ void validateDiffmethod(int N, const std::string& filename)
 
 int main()
 {
-  // simulateRCWA(1024, "Metasurface_03_RCWA_GPU");
-  // for (int i = 1; i <= 512; i *= 2) {
-  //   validateDiffmethod(i, "Metasurface_03_RCWA_GPU_1024.txt");
-  // }
-  // for (scalar e = 2.; e >= 1e-4; e *= 0.2) {
-  //   validateVarRCWA(e, "Metasurface_03_RCWA_GPU_1024.txt");
-  // }
-  // for (int i = 1; i <= 512; i *= 2) {
-  //   validateRCWA(i, "Metasurface_03_RCWA_GPU_1024.txt");
-  // }
-  validateRCWA(1024, "Metasurface_03_RCWA_GPU_1024.txt");
+  simulateRCWA(1024, "Metasurface_03_RCWA_GPU");
   return 0;
 }
