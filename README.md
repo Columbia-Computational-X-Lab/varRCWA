@@ -30,6 +30,7 @@ Some other comments:
 - For comparison with RCWA, the order of the element in the scattering matrix can be sensitive depending on the computational architecture. (A problem with most eigenvalue decomposition algorithm.) If you are really comparing the full scattering matrix including all the unguided modes, please compare the results from GPU with GPU and CPU with CPU. If you are compare some elements, please compare the non-degerated modes.
 - The mode normalization in RCWA is different from most other algorithms as it is in the Fourier space. The energy of different modes with normalized vectors in Fourier space can be different. Please refer to the function *varRCWA_benchmark_guidedmodes* in test_cpu.cpp for energy-based normalization.
 
+We are working to improve the building and usage process, please email ziweizhu95@gmail.com if you have any feedback or suggestions. 
 
 ## Build and Dependencies
 
@@ -106,6 +107,7 @@ make -j8
 The address of the CUDA compiler nvcc may need to be changed depending on where you install it. 
 
 ## Citation
+Any publications resulting from the use of this software should cite the following papers:
 
 ```
 @article{zhu2022VarRCWA,
