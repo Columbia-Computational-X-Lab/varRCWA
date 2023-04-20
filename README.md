@@ -2,7 +2,7 @@
 
 The basic implementation of varRCWA, RCWA, differential method with both periodic boundary condition and PML in the paper:
 
-VarRCWA: An Adaptive High-Order Rigorous Coupled Wave Analysis Method. Ziwei Zhu and Changxi Zheng
+[VarRCWA: An Adaptive High-Order Rigorous Coupled Wave Analysis Method](https://pubs.acs.org/doi/10.1021/acsphotonics.2c00662). Ziwei Zhu and Changxi Zheng
 ACS Photonics 2022 9 (10), 3310-3317. DOI: 10.1021/acsphotonics.2c00662
 
 ## Examples
